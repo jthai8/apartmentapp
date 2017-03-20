@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Apartmentapp</title>
+    <%= csrf_meta_tags %>
+    <script src="//maps.google.com/maps/api/js?key=AIzaSyAX7AogUqDd4PWPwqD2emGLHzl-qYlzqic"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= yield %>
+  </body>
+</html>
