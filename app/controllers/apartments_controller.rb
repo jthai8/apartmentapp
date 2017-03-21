@@ -1,5 +1,6 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+  Apartment.search 'any'
 
   # GET /apartments
   # GET /apartments.json
@@ -30,6 +31,29 @@ class ApartmentsController < ApplicationController
   render json: @hash.to_json
   end
 
+  def search
+    @apartments = Apartment.search(aptstreet1: params[:search])
+    if @apartments.length < 1
+      @apartments = Apartment.all
+    end
+    render 'apartments/index.html.erb'
+  end
+
+  def search_description
+    @apartments = Apartment.search(description: params[:search])
+    if @apartments.length < 1
+      # @apartments = Apartment.all
+    end
+    render 'apartments/index.html.erb'
+  end
+
+  def search_all
+    @apartments = Apartment.search(params[:search])
+    if @apartments.length < 1
+      # @apartments = Apartment.all
+    end
+    render 'apartments/index.html.erb'
+  end
   # POST /apartments
   # POST /apartments.json
   def create
@@ -78,6 +102,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:name, :phone, :hours_to_contact, :aptstreet1, :aptstreet2, :city, :state, :postal_code, :country, :latitude, :longitude)
+      params.require(:apartment).permit(:name, :phone, :hours_to_contact, :aptstreet1, :aptstreet2, :city, :state, :postal_code, :country, :latitude, :longitude, :image, :description)
     end
 end

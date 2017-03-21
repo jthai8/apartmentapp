@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   root 'apartments#index'
+  get '/apartments/search' => 'apartments#search'
+  get '/apartments/search_description' => 'apartments#search_description'
+  get '/apartments/search_all' => 'apartments#search_all'
   resources :apartments do
     # GET /apartments/:apartment_id/map_locations
     get 'map_location'        # Add this and the "do" "end"

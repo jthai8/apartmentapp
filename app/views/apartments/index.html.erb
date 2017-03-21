@@ -2,11 +2,28 @@
 
 <h1>Apartments</h1>
 
-
+<form action="/apartments/search" method="get">
+  <input type="text" name="search" value="" placeholder="Search by Address">
+  <input type="Submit" name="" value="submit">
+</form>
+<br>
+<form action="/apartments/search_description" method="get">
+  <input type="text" name="search" value="" placeholder="Search by Description">
+  <input type="Submit" name="" value="submit">
+</form>
+<br>
+<form action="/apartments/search_all" method="get">
+  <input type="text" name="search" value="" placeholder="Search All Fields">
+  <input type="Submit" name="" value="submit">
+</form>
+<br>
+<%=button_to "Reset Search", "/apartments", method: :get%>
+<br>
 <table>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Photo</th>
       <th>Phone</th>
       <th>Hours to contact</th>
       <th>Aptstreet1</th>
@@ -15,6 +32,7 @@
       <th>State</th>
       <th>Postal code</th>
       <th>Country</th>
+      <th>Description</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,6 +41,7 @@
     <% @apartments.each do |apartment| %>
       <tr>
         <td><%= apartment.name %></td>
+        <td><%= image_tag(apartment.image.url(:small)) %></td>
         <td><%= apartment.phone %></td>
         <td><%= apartment.hours_to_contact %></td>
         <td><%= apartment.aptstreet1 %></td>
@@ -31,6 +50,7 @@
         <td><%= apartment.state %></td>
         <td><%= apartment.postal_code %></td>
         <td><%= apartment.country %></td>
+        <td><%= apartment.description %></td>
         <td><%= link_to 'Show', apartment %></td>
         <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
         <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
