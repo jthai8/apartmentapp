@@ -1,11 +1,15 @@
 class ApartmentsController < ApplicationController
   before_action :set_apartment, only: [:show, :edit, :update, :destroy]
-  Apartment.search 'any'
+  before_action :authenticate_user!, except: [:index]
+  # before_action :authenticate_user! #add this line
 
   # GET /apartments
   # GET /apartments.json
   def index
     @apartments = Apartment.all
+    if params[:search].present?
+      @results = Apartment.fuzzy_search(aptstreet1: params[:search])
+    end
   end
 
   # GET /apartments/1
@@ -14,7 +18,7 @@ class ApartmentsController < ApplicationController
   end
   # GET /apartments/new
   def new
-    @apartment = Apartment.new
+    @apartment = current_user.apartments.build
   end
 
   # GET /apartments/1/edit
@@ -31,33 +35,11 @@ class ApartmentsController < ApplicationController
   render json: @hash.to_json
   end
 
-  def search
-    @apartments = Apartment.search(aptstreet1: params[:search])
-    if @apartments.length < 1
-      @apartments = Apartment.all
-    end
-    render 'apartments/index.html.erb'
-  end
 
-  def search_description
-    @apartments = Apartment.search(description: params[:search])
-    if @apartments.length < 1
-      # @apartments = Apartment.all
-    end
-    render 'apartments/index.html.erb'
-  end
-
-  def search_all
-    @apartments = Apartment.search(params[:search])
-    if @apartments.length < 1
-      # @apartments = Apartment.all
-    end
-    render 'apartments/index.html.erb'
-  end
   # POST /apartments
   # POST /apartments.json
   def create
-    @apartment = Apartment.new(apartment_params)
+    @apartment = current_user.apartments.build(apartment_params)
 
     respond_to do |format|
       if @apartment.save
@@ -102,6 +84,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:name, :phone, :hours_to_contact, :aptstreet1, :aptstreet2, :city, :state, :postal_code, :country, :latitude, :longitude, :image, :description)
+      params.require(:apartment).permit(:name, :phone, :hours_to_contact, :aptstreet1, :aptstreet2, :city, :state, :postal_code, :country, :latitude, :longitude, :image, :description, :search)
     end
 end
