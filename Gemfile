@@ -41,6 +41,8 @@ gem 'textacular'
 gem 'devise'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'cancancan'
+gem 'rolify'
 
 
 group :development, :test do

@@ -6,7 +6,8 @@ class Apartment < ActiveRecord::Base
   validates_attachment :image, presence: true,
     content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] }, size: { in: 0..10.megabytes }
   devise :omniauthable, :omniauth_providers => [:twitter]
-
+  validates :user, presence: true
+  resourcify
 
   def full_address
     self.aptstreet1 + ' ' + self.aptstreet2 + ' ' + self.city + ' ' + self.state + ' ' + self.postal_code + ' ' + self.country

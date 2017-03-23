@@ -1,7 +1,8 @@
 class ApartmentsController < ApplicationController
-  before_action :set_apartment, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, except: [:index]
+  # before_action :set_apartment, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   # before_action :authenticate_user! #add this line
+  load_and_authorize_resource   # add this line
 
   # GET /apartments
   # GET /apartments.json
