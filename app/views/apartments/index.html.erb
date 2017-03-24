@@ -1,27 +1,31 @@
 <p id="notice"><%= notice %></p>
 
+
 <% if user_signed_in? %>
 <h1> Hello, <%= current_user.email %> </h1>
-<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<p> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </p>
 <% else %>
-<%= link_to('Login', new_user_session_path)  %>
-<% end %>
 
-<%= link_to 'Sign-Up', new_user_registration_path %>
-<%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path %>
-<%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
-<% if can? :manage, :all %>
-<%= link_to 'Admin Tools', admin_index_path %>
-<% end %>
+<h1 id="apt">Apartments</h1>
 
-<h1>Apartments</h1>
+<table id="table_log">
+  <tr>
+    <td class="logs"> <%= link_to('Login', new_user_session_path) %> </td>
+    <% end %>
+    <td class="logs"> <%= link_to 'Sign-Up', new_user_registration_path %> </td>
+    <td class="logs"> <%= link_to "Twitter", user_twitter_omniauth_authorize_path %> </td>
+    <td class="logs"> <%= link_to "Facebook", user_facebook_omniauth_authorize_path %> </td>
+    <% if can? :manage, :all %>
+    <td class="logs"><%= link_to 'Admin Tools', admin_index_path %></td>
+    <% end %>
+  </tr>
+</table>
+<br>
 
-<h2>
-  <form action="/apartments" method="get">
-    <input type="text" name="search" placeholder="Search Apartments">
-    <input type="submit" value="Search">
+<form action="/apartments" method="get">
+  <input id="search" type="text" name="search" placeholder="Search Apartments">
+  <input id="search_button" type="submit" value="Search">
 </form>
-</h2>
 
 <br>
 
@@ -43,7 +47,7 @@
 </p>
 <% end %>
 
-<table>
+<table id= "list_table">
   <thead>
     <tr>
       <th>User Email</th>
@@ -67,7 +71,7 @@
       <tr>
         <td><%= apartment.user.email %></td>
         <td><%= apartment.name %></td>
-        <td><%= image_tag(apartment.image.url(:small)) %></td>
+        <td><%= image_tag(apartment.image.url(:small), :class => "style_image") %></td>
         <td><%= apartment.phone %></td>
         <td><%= apartment.hours_to_contact %></td>
         <td><%= apartment.aptstreet1 %></td>

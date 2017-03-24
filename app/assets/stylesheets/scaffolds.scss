@@ -1,12 +1,60 @@
 body {
+  text-align: center;
   background-color: #fff;
-  color: #333;
+  color: #6D7993;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
   margin: 33px;
 }
 
+#new_page_body {
+  background-color: #D5D5D5;
+}
+
+.logs {
+  background-color:#e6e9f0;
+  border-radius: 30px;
+  color: #fff;
+  border-color: #e6e9f0;
+  width: 70px;
+  // margin-right: auto;
+  margin-left: auto;
+}
+
+#table_log {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#apt {
+  font-family: 'Cinzel', serif;
+  font-size: 50px;
+  color: #6D7993;
+  background-color: #fff;
+  padding: 20px;
+  margin: 1px;
+}
+#search{
+  padding: 8px 15px;
+  border: 2px solid #96858F;
+  margin: 1px;
+}
+
+#search_button{
+  margin-top: 1px;
+  position:relative;
+  padding:6px 15px;
+  left:-8px;
+  border:2px solid #96858F;
+  background-color:#96858F;
+  color: #fafafa;
+  margin-left: 5px;
+}
+#search_button:hover  {
+  background-color:#fafafa;
+  color:#96858F;
+}
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -16,7 +64,7 @@ p, ol, ul, td {
 
 pre {
   background-color: #eee;
-  padding: 10px;
+  // padding: 10px;
   font-size: 11px;
 }
 
@@ -24,7 +72,7 @@ a {
   color: #000;
 
   &:visited {
-    color: #666;
+    color: #000;
   }
 
   &:hover {
@@ -33,14 +81,30 @@ a {
   }
 }
 
+.style_image {
+  border-radius: 100px;
+}
+
 th {
   padding-bottom: 5px;
+  border-color: #6D7993;
+  // border-style: solid;
+  // border:1px solid #000;
+  background-color: #96858F;
+  color: white;
+  font-weight: lighter;
+  font-family: 'Puritan', sans-serif;
+  font-size: 14px;
 }
 
 td {
-  padding-bottom: 7px;
-  padding-left: 5px;
-  padding-right: 5px;
+  width: 90px;
+  padding-bottom: -7px;
+  padding-left: 10px;
+  padding-right: 10px;
+  // border-style: solid;
+  // border:1px solid #000;
+  font-family: 'Puritan', sans-serif;
 }
 
 div {
@@ -51,6 +115,12 @@ div {
 
 #notice {
   color: green;
+}
+
+#list_table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .field_with_errors {
