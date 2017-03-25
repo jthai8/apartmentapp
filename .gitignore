@@ -47,9 +47,6 @@ bower.json
 # Ignore Byebug command history file.
 .byebug_history
 
-# Use this if you use a database.yaml template
-config/database.yml
-
 
 # Ignore bundler config.
 /.bundle
