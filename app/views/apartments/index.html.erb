@@ -2,6 +2,7 @@
 
 
 <% if user_signed_in? %>
+<h1 id="apt">Apartments</h1>
 <h1> Hello, <%= current_user.email %> </h1>
 <p> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </p>
 <% else %>
@@ -56,12 +57,17 @@
       <th>Phone</th>
       <th>Hours to contact</th>
       <th>Aptstreet1</th>
-      <th>Aptstreet2</th>
+      <!-- <th>Aptstreet2</th> -->
       <th>City</th>
       <th>State</th>
       <th>Postal code</th>
       <th>Country</th>
       <th>Description</th>
+      <th>Details</th>
+      <% if can? :manage, :all %>
+      <th>Edit</th>
+      <th>Remove</th>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -75,7 +81,7 @@
         <td><%= apartment.phone %></td>
         <td><%= apartment.hours_to_contact %></td>
         <td><%= apartment.aptstreet1 %></td>
-        <td><%= apartment.aptstreet2 %></td>
+        <!-- <td><%= apartment.aptstreet2 %></td> -->
         <td><%= apartment.city %></td>
         <td><%= apartment.state %></td>
         <td><%= apartment.postal_code %></td>

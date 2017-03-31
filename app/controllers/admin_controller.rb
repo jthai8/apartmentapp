@@ -9,9 +9,9 @@ class AdminController < ApplicationController
   # put/patch "admin/:id"
   def update
     user = User.find(params[:id])
-    user.remove_role user.roles.last # user only has one role
-    user.add_role(:admin)
-    redirect_to '/admin'
+    user.roles.destroy_all # user only has one role
+    user.add_role(params[:role])
+    redirect_to '/admin/index'
   end
 
   private
