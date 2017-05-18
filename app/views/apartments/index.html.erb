@@ -1,12 +1,11 @@
 <p id="notice"><%= notice %></p>
-
+<!-- <% if user_signed_in? %>
+<p id="greeting"> Hello, <%= current_user.email %> </p>
+<% end %> -->
 
 <% if user_signed_in? %>
-<h1 id="apt">Apartments</h1>
-<h1> Hello, <%= current_user.email %> </h1>
-<p> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </p>
+<p id="logout"> <%= link_to('Logout', destroy_user_session_path, :method => :delete) %> </p>
 <% else %>
-
 <h1 id="apt">Apartments</h1>
 
 <table id="table_log">
@@ -22,6 +21,7 @@
   </tr>
 </table>
 <br>
+<!-- <h1 id="apt">Apartments</h1> -->
 
 <form action="/apartments" method="get">
   <input id="search" type="text" name="search" placeholder="Search Apartments">

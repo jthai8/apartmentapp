@@ -12,6 +12,13 @@ th {
   font-size: 50px;
 }
 
+#greeting {
+  font-size: 12px;
+  color: rgb(12, 153, 205);
+  font-family: verdana, arial, helvetica, sans-serif;
+  text-align: left;
+}
+
 .apartment_show {
   text-align: left;
 }
@@ -33,6 +40,10 @@ th {
 #table_log {
   margin-right: auto;
   margin-left: auto;
+}
+
+#logout {
+  text-align: right;
 }
 
 #apt {
