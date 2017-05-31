@@ -1,6 +1,7 @@
 body {
   text-align: center;
-  background-color: #fff;
+  background-color: #ffffff;
+  background-image: url(CityCenter.jpg);
   color: #6D7993;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
@@ -29,7 +30,7 @@ th {
 
 .logs {
   background-color:#e6e9f0;
-  border-radius: 30px;
+  // border-radius: 30px;
   color: #fff;
   border-color: #e6e9f0;
   width: 70px;
@@ -101,7 +102,7 @@ a {
 }
 
 .style_image {
-  border-radius: 100px;
+  // border-radius: 100px;
 }
 
 th {
